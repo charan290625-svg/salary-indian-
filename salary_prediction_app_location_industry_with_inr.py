@@ -11,14 +11,9 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 # Load the data
 # Upload the CSV file using Streamlit
-uploaded_file = st.file_uploader("Salary_Data_10000.csv", type="csv")
+df = pd.read_csv("Salary_Data_10000.csv")
+df.dropna(inplace=True)
 
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    df.dropna(inplace=True)
-else:
-    st.warning("⚠️ Please upload the Salary_Data.csv file to proceed.")
-    st.stop()
 
 
 # Encode categorical data
