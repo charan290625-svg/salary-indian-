@@ -85,9 +85,16 @@ usd_salary = prediction
 inr_salary = prediction * 83.5  # Approximate USD to INR conversion
 
 # Output
+# Prediction
+prediction = model.predict(input_df)[0]
+usd_salary = prediction
+inr_salary = prediction * 83.5  # Approximate conversion
+
+# Output
 st.subheader("📈 Predicted Salary:")
-st.success(f"${usd_salary:,.2f} (USD)")
-st.success(f"₹{inr_salary:,.2f} (INR)")
+st.success(f"💵 ${usd_salary:,.2f} (USD)")
+st.success(f"🇮🇳 ₹{inr_salary:,.2f} (INR)")
+
 
 # Optional: Display feature importance
 if st.checkbox("Show Feature Importances"):
