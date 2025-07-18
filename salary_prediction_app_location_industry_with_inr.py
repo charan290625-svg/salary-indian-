@@ -10,8 +10,16 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 # Load the data
-df = pd.read_csv("Salary_Data.csv")
-df.dropna(inplace=True)
+# Upload the CSV file using Streamlit
+uploaded_file = st.file_uploader("Salary_Data_10000.csv", type="csv")
+
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    df.dropna(inplace=True)
+else:
+    st.warning("⚠️ Please upload the Salary_Data.csv file to proceed.")
+    st.stop()
+
 
 # Encode categorical data
 df['Education Level'].replace(["Bachelor's Degree", "Master's Degree", "phD"], ["Bachelor's", "Master's", "PhD"], inplace=True)
